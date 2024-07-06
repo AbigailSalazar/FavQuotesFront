@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <h1>Groups</h1>
+    <div class="row row-gap-3 row-cols-3">
+        @for(group of groupTest;track group){
+            <app-group [group]="group"></app-group>  
+        }
+        
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-star"></i>
+            FavQuotes</a>
+        <button onclick="onClickToggle()" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class=" navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                @if(user!=null){
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My Favs</a>
+                </li>
+                <li class="nav-item me-2">
+                    <a name="" id="" class="btn btn-primary" href="/" role="button">Logout</a>
+                </li>
+                }
+                @else{
+                    <li class="nav-item me-2">
+                        <a name="" id="" class="btn btn-primary" role="button" href="/login">Login</a>
+                    </li>
+                }
+        
+            </ul>
+        </div>
+    </div>
+</nav>

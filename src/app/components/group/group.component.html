@@ -1,0 +1,11 @@
+@if(group!=null){
+    <div class="card" >
+    <img class="card-img-top" src="{{groupPhoto}}" alt="{{group.name}} Group photo" />
+    <div class="card-body">
+        <h4 class="card-title">{{group.name}}</h4>
+        <p class="card-text">Explore this group quotes!</p>
+    </div>
+    <a href="/{{group.name}}/quotes" class="stretched-link"></a>
+</div>
+}
+
