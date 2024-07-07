@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
     <h1>Groups</h1>
-    <div class="row row-gap-3 row-cols-3 ">
+    <div class="row row-gap-3 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
         @for(group of groups;track group){
             <app-group [group]="group"></app-group>  
         }

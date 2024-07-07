@@ -6,7 +6,7 @@
     <app-create-quote [idGroup] = "group._id" [idUser]="user"></app-create-quote>
     }
 
-    <div class="row row-gap-3 row-cols-2">
+    <div class="row row-gap-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
         @for(quote of group.quotes;track quote){
         <app-quote [quote]="quote" [idUser]="user"></app-quote>
         }
