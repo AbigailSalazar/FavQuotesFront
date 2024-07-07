@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Quote } from '../../models/quote';
 import { ToastrService } from 'ngx-toastr';
+import { QuoteService } from '../../services/quote.service';
+import { GroupService } from '../../services/group.service';
 
 @Component({
   selector: 'app-create-quote',
@@ -11,16 +13,22 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './create-quote.component.css'
 })
 export class CreateQuoteComponent {
-  @Input() idGroup: string | undefined;
+  @Input() idGroup: any;
   @Input()
   idUser: any;
 
   productoForm: FormGroup;
-  constructor(private fb: FormBuilder, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService, private _quoteService: QuoteService, private _groupService:GroupService) {
     this.productoForm = this.fb.group({
       person: ["", Validators.required],
       quote: ["", Validators.required]
     })
+  }
+
+
+  ngOnInit() {
+    console.log('idGroup:', this.idGroup);
+    console.log('idUser:', this.idUser);
   }
 
   addQuote() {
@@ -33,7 +41,13 @@ export class CreateQuoteComponent {
       quote: quoteText,
       likes: []
     }
-    this.productoForm.reset();
-    this.toastr.success("Quote from "+person+" "+"was created!","Quote saved");
+
+    this._quoteService.addQuote(QUOTE).subscribe(data => {
+      this._groupService.addQuote(this.idGroup,(data as any)._id).subscribe(data => {
+        this.toastr.success("Quote from " + person + " " + "was created!", "Quote saved");
+        this.productoForm.reset();
+        
+      })
+    })
   }
 }

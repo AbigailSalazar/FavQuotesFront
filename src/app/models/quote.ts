@@ -3,7 +3,7 @@ export class Quote{
     user:string;
     person:string;
     quote:string;
-    likes:[]
+    likes:string[]
 
     constructor(user:string,person:string,quote:string,likes:[]) {
         this.user=user;

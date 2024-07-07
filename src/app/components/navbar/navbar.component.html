@@ -15,10 +15,10 @@
                 </li>
                 @if(user!=null){
                 <li class="nav-item">
-                    <a class="nav-link" href="#">My Favs</a>
+                    <a class="nav-link" href="/Favorites/quotes">My Favs</a>
                 </li>
                 <li class="nav-item me-2">
-                    <a name="" id="" class="btn btn-primary" href="/" role="button">Logout</a>
+                    <button name="" id="" class="btn btn-primary" (click)="logout()" role="button">Logout</button>
                 </li>
                 }
                 @else{

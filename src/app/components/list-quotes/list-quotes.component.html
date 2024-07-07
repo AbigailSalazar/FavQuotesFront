@@ -1,14 +1,14 @@
-<app-navbar></app-navbar>
+<app-navbar [user]="user"></app-navbar>
 <div class="container-fluid">
-    <img src="https://placehold.co/600x400" alt="Group photo" class="img-banner rounded w-100 vh-25">
-    <h1 class="mb-3">Quotes from {{groupName}}</h1>
-    @if(user!=null && groupName!="favorites"){
-    <app-create-quote [idGroup] = "groupId" [idUser]="user._id"></app-create-quote>
+    <img src="{{group.photo}}" alt="Group photo" class="img-banner rounded w-100 vh-25">
+    <h1 class="mb-3">{{groupName}} Quotes</h1>
+    @if(user!=null && groupName!="Favorites"){
+    <app-create-quote [idGroup] = "group._id" [idUser]="user"></app-create-quote>
     }
 
     <div class="row row-gap-3 row-cols-2">
-        @for(quote of quotes;track quote){
-        <app-quote [quote]="quote"></app-quote>
+        @for(quote of group.quotes;track quote){
+        <app-quote [quote]="quote" [idUser]="user"></app-quote>
         }
 
     </div>

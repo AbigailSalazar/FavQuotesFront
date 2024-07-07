@@ -1,11 +1,11 @@
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">{{quote.person}}</h4>
-        <p class="card-text">{{quote.quote}}</p>
+        <h4 class="card-title">{{quote?.person}}</h4>
+        <p class="card-text">{{quote?.quote}}</p>
         <div class="container mt-4 position-relative">
             
-            <button class="btn btn-outline-primary position-absolute end-0 bottom-0">
-                {{quote.likes.length}}
+            <button class="btn btn-outline-primary position-absolute end-0 bottom-0" (click)="toggleLike()">
+                {{quote?.likes?.length}}
                 @if(!liked){
                     <i class="bi bi-star"></i>
                 }

@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
+import { redirect } from 'next/navigation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -11,12 +15,14 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 export class SignupComponent {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private _userService: UserService) {
     this.registerForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required,this.passwordMatchValidator]]
+      confirmPassword: ['', [Validators.required, this.passwordMatchValidator]]
     }, { validator: this.passwordMatchValidator });
   }
 
@@ -27,8 +33,18 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-      // Handle form submission here
+
+      const USER: User = {
+        name: this.registerForm.get("name")?.value,
+        email: this.registerForm.get("email")?.value,
+        password: this.registerForm.get("password")?.value
+      }
+      this._userService.signUp(USER).subscribe(data => {
+        this.router.navigate(["login"]);
+      }, error => { console.log(error); }
+
+      )
+
     } else {
       console.log('Form is not valid');
     }

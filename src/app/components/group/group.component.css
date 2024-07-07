@@ -1,0 +1,5 @@
+.img-group{
+    background-image: url("https://placehold.co/600x400?text=image");
+    object-fit: cover;
+    height: 7rem;
+}

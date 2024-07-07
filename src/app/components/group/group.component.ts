@@ -10,7 +10,7 @@ import { redirect } from 'next/navigation';
   styleUrl: './group.component.css'
 })
 export class GroupComponent {
-   @Input() group:any;
-    groupPhoto= "https://placehold.co/600x400"
+   
+  @Input() group?:Group;
 
 }

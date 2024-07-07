@@ -9,8 +9,8 @@
                 <div class="card-body">
                     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="row row-cols-1 row-gap-2 justify-content-center">
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" formControlName="username"
+                            <label for="name">Username</label>
+                            <input type="text" class="form-control" id="name" formControlName="name"
                                 placeholder="Enter your username">
 
                             @if(registerForm.get('username')?.invalid && registerForm.get('username')?.touched){
