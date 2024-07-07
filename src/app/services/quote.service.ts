@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Quote } from '../models/quote';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuoteService {
   url="https://api-fav-quotes.netlify.app/api/quotes"
-  constructor(private http: HttpClient, private _userService:UserService) { }
+  constructor(private http: HttpClient, private _userService:UserService, private router:Router) { }
 
   getQuoteByAuthor(authorName:string):Observable<any>{
     return this.http.get(this.url + "/author",{params:  new HttpParams().set('person', authorName)})
@@ -54,6 +55,7 @@ export class QuoteService {
   private handleError(error: HttpErrorResponse) {
     if(error.status === 403) {
       this._userService.logout()
+      this.router.navigate([""]);
     }
     else if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
