@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Quote } from '../../models/quote';
 import { QuoteService } from '../../services/quote.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-quote',
@@ -15,7 +16,7 @@ export class QuoteComponent {
 
   @Input() idUser: string = "";
 
-  constructor(private _quoteService: QuoteService) {
+  constructor(private _quoteService: QuoteService, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -26,6 +27,11 @@ export class QuoteComponent {
 
   toggleLike() {
     if (!this.quote) return;
+
+    if(!this.idUser){
+      this.toastr.info("Login or Sign up to like this quote","You haven't login")
+      return;
+    };
 
     if (this.liked&&this.quote._id) {
       this._quoteService.unLikeQuote(this.quote._id).subscribe(() => {
