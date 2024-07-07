@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Group } from '../../models/group';
-import { redirect } from 'next/navigation';
 
 @Component({
   selector: 'app-group',
