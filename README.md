@@ -1,6 +1,6 @@
 # FavQuotesFront
 Front-end for web application FavQuotes. Create and save your favorite quotes.
-
+![Captura de pantalla 2024-07-08 131105](https://github.com/AbigailSalazar/FavQuotesFront/assets/75355095/e893e0d4-8a41-460a-b601-67714e4e272c)
 ## 💻Used Technologies
 * Angular
 * Bootstrap
