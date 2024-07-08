@@ -1,5 +1,5 @@
 # FavQuotesFront
-Front-end for web application FavQuotes.
+Front-end for web application FavQuotes. Create and save your favorite quotes.
 
 ## 💻Used Technologies
 * Angular
