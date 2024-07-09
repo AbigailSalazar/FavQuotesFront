@@ -25,6 +25,7 @@ export class ListQuotesComponent {
   group:Group=new Group("");
   user:any;
   loading:boolean = false;
+  bootstrap: any;
   //get group from service
   constructor(private _groupService: GroupService, private _userService:UserService,private _quotesService:QuoteService, private toastr:ToastrService) { 
     
@@ -59,8 +60,12 @@ export class ListQuotesComponent {
      })
    }
    
-   prepareToDelete(quote: Quote) {
+  prepareToDelete(quote: Quote) {
     this.quoteToDelete = quote;
+  }
+
+  addQuote(quote: Quote) {
+    this.group.quotes?.push(quote);
   }
 
   deleteQuote() {
@@ -72,7 +77,10 @@ export class ListQuotesComponent {
         this._groupService.deleteQuote(groupId, idQuote).subscribe(() => {
           this.toastr.success("Succesful deleted","Quote deleted");
           this.loading=false;
-          location.reload();
+          this.group.quotes = this.group.quotes?.filter(obj => {return obj._id !== idQuote;});
+          this.quoteToDelete=undefined;
+          const btnClose = document.getElementById("btnCloseModal");
+          btnClose?.click();
         })
       })
     }

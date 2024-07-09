@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Quote } from '../../models/quote';
 import { ToastrService } from 'ngx-toastr';
@@ -17,6 +17,7 @@ export class CreateQuoteComponent {
   @Input()
   idUser: any;
   loading:boolean=false;
+  @Output() addRequest = new EventEmitter<Quote>();
 
   productoForm: FormGroup;
   constructor(private fb: FormBuilder, private toastr: ToastrService, private _quoteService: QuoteService, private _groupService:GroupService) {
@@ -49,6 +50,7 @@ export class CreateQuoteComponent {
         this.toastr.success("Quote from " + person + " " + "was created!", "Quote saved");
         this.productoForm.reset();
         this.loading = false;
+        this.addRequest.emit(QUOTE);
       })
     })
   }
