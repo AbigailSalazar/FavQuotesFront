@@ -16,6 +16,7 @@ export class CreateQuoteComponent {
   @Input() idGroup: any;
   @Input()
   idUser: any;
+  loading:boolean=false;
 
   productoForm: FormGroup;
   constructor(private fb: FormBuilder, private toastr: ToastrService, private _quoteService: QuoteService, private _groupService:GroupService) {
@@ -32,6 +33,7 @@ export class CreateQuoteComponent {
   }
 
   addQuote() {
+    this.loading = true;
     const person = this.productoForm.get("person")?.value
     const quoteText = this.productoForm.get("quote")?.value;
 
@@ -46,7 +48,7 @@ export class CreateQuoteComponent {
       this._groupService.addQuote(this.idGroup,(data as any)._id).subscribe(data => {
         this.toastr.success("Quote from " + person + " " + "was created!", "Quote saved");
         this.productoForm.reset();
-        
+        this.loading = false;
       })
     })
   }

@@ -22,6 +22,6 @@ export class GroupService {
   }
 
   deleteQuote(groupId:string,quoteId:string){
-    return this.http.delete(this.url+"/"+groupId+"quote",{body:quoteId})
+    return this.http.delete(this.url+"/"+groupId+"/quotes",{body:{quote:quoteId}})
   }
 }

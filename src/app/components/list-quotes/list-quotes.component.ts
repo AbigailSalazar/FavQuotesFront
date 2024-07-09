@@ -3,12 +3,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { QuoteComponent } from '../quote/quote.component';
 import { Quote } from '../../models/quote';
 import { CreateQuoteComponent } from '../create-quote/create-quote.component';
-import { User } from '../../models/user';
 import { ActivatedRoute } from '@angular/router';
 import { Group } from '../../models/group';
 import { GroupService } from '../../services/group.service';
 import { UserService } from '../../services/user.service';
 import { QuoteService } from '../../services/quote.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-quotes',
@@ -21,11 +21,12 @@ export class ListQuotesComponent {
   
   private activatedRoute = inject(ActivatedRoute);
   groupName = this.activatedRoute.snapshot.params['groupName'];
-
+  quoteToDelete?: Quote;
   group:Group=new Group("");
   user:any;
+  loading:boolean = false;
   //get group from service
-  constructor(private _groupService: GroupService, private _userService:UserService,private _quotesService:QuoteService) { 
+  constructor(private _groupService: GroupService, private _userService:UserService,private _quotesService:QuoteService, private toastr:ToastrService) { 
     
     this.user = this._userService.getUser();
     if(this.groupName=="Favorites"){
@@ -58,4 +59,24 @@ export class ListQuotesComponent {
      })
    }
    
+   prepareToDelete(quote: Quote) {
+    this.quoteToDelete = quote;
+  }
+
+  deleteQuote() {
+    this.loading=true;
+    const idQuote = this.quoteToDelete?._id;
+    const groupId = this.group._id;
+    if (idQuote && groupId) {
+      this._quotesService.deleteQuote(idQuote).subscribe(() => {
+        this._groupService.deleteQuote(groupId, idQuote).subscribe(() => {
+          this.toastr.success("Succesful deleted","Quote deleted");
+          this.loading=false;
+          location.reload();
+        })
+      })
+    }
+
+  }
+
 }

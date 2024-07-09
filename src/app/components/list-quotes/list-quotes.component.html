@@ -6,10 +6,32 @@
     <app-create-quote [idGroup] = "group._id" [idUser]="user"></app-create-quote>
     }
 
-    <div class="row row-gap-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <div class="row row-gap-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mb-3">
         @for(quote of group.quotes;track quote){
-        <app-quote [quote]="quote" [idUser]="user"></app-quote>
+        <app-quote [quote]="quote" [idUser]="user" (deleteRequest)="prepareToDelete(quote)"></app-quote>
         }
 
     </div>
 </div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleteModalLabel">Delete Quote</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete this quote?
+          <strong>"{{quoteToDelete?.quote}}"</strong>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="deleteQuote()" [disabled]="loading">Delete
+            <span [hidden]="!loading" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span [hidden]="!loading" class="visually-hidden" role="status">Loading...</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

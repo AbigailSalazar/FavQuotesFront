@@ -9,8 +9,10 @@
             <input formControlName="quote"  type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" placeholder="Quote...">
         </div>
-        <button [disabled]="productoForm.invalid" type="button" class="btn btn-primary" type="submit">
+        <button [disabled]="productoForm.invalid || loading" type="button" class="btn btn-primary" type="submit">
             <i class="bi bi-plus-lg"></i> Add
+            <span [hidden]="!loading" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span [hidden]="!loading" class="visually-hidden" role="status">Loading...</span>
         </button>
         
         </form>

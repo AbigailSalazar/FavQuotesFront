@@ -1,18 +1,26 @@
-<div class="card">
+
+    <div class="card">
     <div class="card-body">
-        <h4 class="card-title">{{quote?.person}}</h4>
+        <h4 class="card-title">{{quote?.person}}
+        </h4>
         <p class="card-text">{{quote?.quote}}</p>
         <div class="container mt-5 position-relative">
-            
+
+            @if(idUser==quote?.user){
+                <button class="btn btn-outline-danger position-absolute start-0 bottom-0 bi bi-trash3 " data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="requestDelete()"></button>
+            }
+
+                
             <button class="btn btn-outline-primary position-absolute end-0 bottom-0" (click)="toggleLike()">
                 {{quote?.likes?.length}}
                 @if(!liked){
-                    <i class="bi bi-star"></i>
+                <i class="bi bi-star"></i>
                 }
                 @else{
-                    <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
                 }
             </button>
         </div>
     </div>
 </div>
+
