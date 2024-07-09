@@ -45,12 +45,12 @@ export class CreateQuoteComponent {
       likes: []
     }
 
-    this._quoteService.addQuote(QUOTE).subscribe(data => {
-      this._groupService.addQuote(this.idGroup,(data as any)._id).subscribe(data => {
+    this._quoteService.addQuote(QUOTE).subscribe(newQuote => {
+      this._groupService.addQuote(this.idGroup,(newQuote as any)._id).subscribe(data => {
         this.toastr.success("Quote from " + person + " " + "was created!", "Quote saved");
         this.productoForm.reset();
         this.loading = false;
-        this.addRequest.emit(QUOTE);
+        this.addRequest.emit(newQuote as Quote);
       })
     })
   }

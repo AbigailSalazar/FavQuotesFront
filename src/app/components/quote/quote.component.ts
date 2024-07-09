@@ -13,6 +13,7 @@ import { GroupService } from '../../services/group.service';
 })
 export class QuoteComponent {
   @Input() quote?: Quote;
+  @Input() allowDelete: boolean=false;
   @Output() deleteRequest = new EventEmitter<Quote>();
   liked: boolean = false;
   deleted:boolean = false;

@@ -8,7 +8,7 @@
 
     <div class="row row-gap-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mb-3">
         @for(quote of group.quotes;track quote){
-        <app-quote [quote]="quote" [idUser]="user" (deleteRequest)="prepareToDelete(quote)"></app-quote>
+        <app-quote [quote]="quote" [idUser]="user" [allowDelete]="groupName!='Favorites'" (deleteRequest)="prepareToDelete(quote)"></app-quote>
         }
 
     </div>
