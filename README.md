@@ -4,6 +4,7 @@
 **FavQuotes Front-end** is the user interface for the FavQuotes web application, allowing users to create, save, and interact with their favorite quotes. The back-end service for this application can be found [here](https://github.com/AbigailSalazar/FavQuotes).
 
 ![FavQuotes Screenshot](https://github.com/AbigailSalazar/FavQuotesFront/assets/75355095/e893e0d4-8a41-460a-b601-67714e4e272c)
+![Captura de pantalla 2024-09-04 010736](https://github.com/user-attachments/assets/a2c633f1-0e30-495f-b0bb-ab4d6a91b94e)
 
 ## 🔧 Features
 - **User-Friendly Interface**: An intuitive design for easy navigation and interaction.
@@ -16,6 +17,9 @@
 - **Bootstrap**: A CSS framework for responsive design and modern UI components.
 - **TypeScript**: A superset of JavaScript that enhances development with static typing.
 - **ngx-toastr**: A library for displaying non-blocking notifications for success and error messages.
+
+## 🚀 Live demo
+You can see  a live example of this aplication [here](https://fav-quotes.netlify.app/)
 
 
 ## ⚒️Development server
