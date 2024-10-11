@@ -1,10 +1,22 @@
-# FavQuotesFront
-Front-end for web application FavQuotes. Create and save your favorite quotes. Back-end [here](https://github.com/AbigailSalazar/FavQuotes).
-![Captura de pantalla 2024-07-08 131105](https://github.com/AbigailSalazar/FavQuotesFront/assets/75355095/e893e0d4-8a41-460a-b601-67714e4e272c)
-## 💻Used Technologies
-* Angular
-* Bootstrap
-* TypeScript
+![favicon](https://github.com/user-attachments/assets/2803e3e8-b761-4a2c-9d5b-d349ec20ca16)
+
+# FavQuotes Front-end
+**FavQuotes Front-end** is the user interface for the FavQuotes web application, allowing users to create, save, and interact with their favorite quotes. The back-end service for this application can be found [here](https://github.com/AbigailSalazar/FavQuotes).
+
+![FavQuotes Screenshot](https://github.com/AbigailSalazar/FavQuotesFront/assets/75355095/e893e0d4-8a41-460a-b601-67714e4e272c)
+
+## 🔧 Features
+- **User-Friendly Interface**: An intuitive design for easy navigation and interaction.
+- **Quote Management**: Create, save, and manage your favorite quotes seamlessly.
+- **Responsive Design**: Optimized for both desktop and mobile devices using Bootstrap.
+- **Notification System**: Utilizes **ngx-toastr** for displaying error and success messages.
+
+## 💻 Technologies Used
+- **Angular**: A powerful framework for building dynamic web applications.
+- **Bootstrap**: A CSS framework for responsive design and modern UI components.
+- **TypeScript**: A superset of JavaScript that enhances development with static typing.
+- **ngx-toastr**: A library for displaying non-blocking notifications for success and error messages.
+
 
 ## ⚒️Development server
 
